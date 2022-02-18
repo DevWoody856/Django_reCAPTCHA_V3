@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  <script src='https://www.google.com/recaptcha/api.js?render=6LdrC3ceAAAAAAvySGsV_RIpUUQAGaannsFuRwbI'></script>
+    <title>reCAPTCHA Sample</title>
+</head>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+</html>
+ <!-- reCAPTCHA Integration Function-Based View -->
+  <script>
+    grecaptcha.ready(function() {
+      $('#contactForm_func').submit(function(e){
+        var form = this;
+        e.preventDefault()
+        grecaptcha.execute('6LdrC3ceAAAAAAvySGsV_RIpUUQAGaannsFuRwbI', {action: 'contactForm_func'}).then(function(token) {
+          $('#recaptcha_v3_func').val(token)
+            document.getElementById('recaptcha_v3_func').value = token;
+            form.submit()
+        });
+      })
+    });
+  </script>
+
+<!-- reCAPTCHA Integration Class-Based View -->
+  <script>
+    grecaptcha.ready(function() {
+      $('#contactForm_class').submit(function(e){
+        var form = this;
+        e.preventDefault()
+        grecaptcha.execute('6LdrC3ceAAAAAAvySGsV_RIpUUQAGaannsFuRwbI', {action: 'contactForm_class'}).then(function(token) {
+          $('#recaptcha_v3_class').val(token)
+            document.getElementById('recaptcha_v3_class').value = token;
+            form.submit()
+        });
+      })
+    });
+  </script>

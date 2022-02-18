@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>reCAPTCHA Test Function-Based View</h1>
+    <form id="contactForm_func" method="post" action="{% url 'formapp:post_list' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="hidden" id="recaptcha_v3_func" name="recaptcha_v3_func">
+        <button type="submit" value="func">Create new</button>
+    </form>
+    {% if messages %}
+	<ul class="messages">
+		{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+		{% endfor %}
+	</ul>
+{% endif %}
+{% endblock %}
